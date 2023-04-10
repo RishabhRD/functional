@@ -1,0 +1,8 @@
+file(GLOB_RECURSE test_list "*test.cpp")
+add_executable(functional_tests ${test_list})
+target_include_directories(functional_tests PRIVATE ../include)
+target_include_directories(functional_tests SYSTEM PUBLIC /opt/homebrew/opt/llvm/include/c++/v1)
+target_link_libraries(functional_tests PRIVATE project_warnings)
+target_link_libraries(functional_tests PUBLIC CONAN_PKG::doctest)
+target_link_libraries(functional_tests PRIVATE project_options)
+add_test(NAME functional_tests COMMAND functional_tests)
