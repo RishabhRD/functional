@@ -77,3 +77,12 @@ int main(){
   a | fbc;
 }
 ```
+
+## rd::flip
+
+Returns a function such that last argument to given function is first argument
+to returned function.
+
+```
+F(a, b...) => G(b..., a)
+```
