@@ -55,3 +55,25 @@ auto sum = rd::curried([](auto a, auto b){
 auto sum_with_1 = sum(1);
 // sum_with_1(2) == 3;
 ```
+
+## rd::pipeable
+
+Makes a function pipeable and **reverse curried** as well.
+
+```cpp
+auto f = rd::pipeable([](auto a, auto b, auto c){
+  // ...
+});
+
+auto fc = f(c);
+// call fc(a, b)
+
+auto fbc = f(b);
+
+int main(){
+  a | f(b, c);
+  a | fc(b);
+  a | fbc();
+  a | fbc;
+}
+```
