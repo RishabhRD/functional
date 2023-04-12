@@ -1,5 +1,5 @@
 [requires]
-zlib/1.2.11
+doctest/2.4.10
 
 [generators]
 CMakeDeps

@@ -5,6 +5,7 @@ project(functional CXX)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
+set(CMAKE_PREFIX_PATH build)
 find_package(doctest REQUIRED)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
