@@ -4,6 +4,7 @@
 #include <functional>
 
 namespace rd {
+namespace detail {
 template <class F, class G> struct compose_fn {
   [[no_unique_address]] F f;
   [[no_unique_address]] G g;
@@ -39,9 +40,10 @@ template <class F, class G> struct compose_fn {
     return call(std::move(f), std::move(g), std::forward<Args>(args)...);
   }
 };
+} // namespace detail
 
 template <class F, class G> constexpr auto compose(F &&f, G &&g) {
-  return compose_fn<std::remove_cvref_t<F>, std::remove_cvref_t<G>>(
+  return detail::compose_fn<std::remove_cvref_t<F>, std::remove_cvref_t<G>>(
       std::forward<F>(f), std::forward<G>(g));
 }
 } // namespace rd
