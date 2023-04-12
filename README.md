@@ -43,4 +43,15 @@ Then,
 G = rd::bind_back(F, arg2...) :: G(Arg1...) -> R
 ```
 
-## rd::pipeable
+## rd::curried
+
+Makes a given function curried.
+
+```cpp
+auto sum = rd::curried([](auto a, auto b){
+  return a + b;
+});
+
+auto sum_with_1 = sum(1);
+// sum_with_1(2) == 3;
+```

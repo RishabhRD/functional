@@ -1,6 +1,5 @@
 #pragma once
 
-#include "bind.hpp"
 #include <functional>
 
 namespace rd {
@@ -18,8 +17,8 @@ public:
   }
 
   template <typename... Xs> constexpr auto operator()(Xs &&...xs) const {
-    using FType = decltype(rd::bind_back(f, std::forward<Xs>(xs)...));
-    return curried<FType>{rd::bind_back(f, std::forward<Xs>(xs)...)};
+    using FType = decltype(std::bind_front(f, std::forward<Xs>(xs)...));
+    return curried<FType>{std::bind_front(f, std::forward<Xs>(xs)...)};
   }
 };
 
